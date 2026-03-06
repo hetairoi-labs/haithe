@@ -13,6 +13,7 @@ git pull origin main
 echo "🔨 Building Rust server..."
 cd ./cargo
 cargo build --release
+cd ..
 
 echo "⚙️ Restarting Rust server..."
 pm2 restart haithe-server || pm2 start ecosystem.config.js --only haithe-server
