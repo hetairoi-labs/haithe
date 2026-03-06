@@ -15,12 +15,12 @@ cd ./cargo
 cargo build --release
 
 echo "⚙️ Restarting Rust server..."
-pm2 restart rust-server || pm2 start ./target/release/main --name rust-server
+pm2 restart haithe-server || pm2 start ecosystem.config.js --only haithe-server
 
 echo "🖼️ Building and restarting Bun client..."
 cd ../packages/server
 bun install
 bun run build
-pm2 restart bun-client || pm2 start --name bun-client -- bun run start
+pm2 restart haithe-client || pm2 start ecosystem.config.js --only haithe-client
 
 echo "✅ Deploy complete!"
