@@ -18,9 +18,10 @@ echo "⚙️ Restarting Rust server..."
 pm2 restart haithe-server || pm2 start ecosystem.config.js --only haithe-server
 
 echo "🖼️ Building and restarting Bun client..."
-cd ../packages/server
+cd packages/server
 bun install
 bun run build
+cd ../..
 pm2 restart haithe-client || pm2 start ecosystem.config.js --only haithe-client
 
 echo "✅ Deploy complete!"
