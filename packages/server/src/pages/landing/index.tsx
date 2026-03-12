@@ -14,7 +14,6 @@ import Icon from "@/src/lib/components/custom/Icon";
 import NightSky from "./NightSky";
 
 import { motion } from "framer-motion";
-import { FloatingNFTBanner } from "./FloatingNFTBanner";
 
 type IconName = keyof typeof icons;
 
@@ -50,7 +49,7 @@ export default function Landing() {
     <div className="min-h-screen bg-black text-white overflow-hidden relative w-full">
       <NightSky />
       <Navbar />
-      <section className="relative pt-36 lg:pt-50">
+      <section className="relative pt-36">
         <div className="absolute inset-0 w-full h-full overflow-hidden">
           <video
             className="absolute top-0 left-0 w-full object-cover h-full opacity-30"
@@ -458,7 +457,6 @@ export default function Landing() {
       <section className="mt-20">
         <Footer />
       </section>
-      <FloatingNFTBanner />
     </div>
   );
 }

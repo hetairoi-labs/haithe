@@ -5,10 +5,9 @@
   "main": "prod.ts",
   "module": "prod.ts",
   "scripts": {
-    "dev": "bun --hot dev.ts",
-    "start": "NODE_ENV=production bun prod.ts",
-    "build": "bun run build.ts",
-    "analyze": "bun install --analyze src/**/*.tsx"
+    "dev": "bun --hot server.ts",
+    "start": "NODE_ENV=production bun server.ts",
+    "build": "bun run lib/build/index.ts"
   },
   "dependencies": {
     "@google/genai": "^1.9.0",
@@ -70,7 +69,7 @@
     "tailwindcss": "^4.0.6",
     "tailwindcss-animate": "^1.0.7",
     "wagmi": "^2.15.6",
-    "zod": "^3.24.2",
+    "zod": "^4.3.6",
     "zustand": "^5.0.6"
   },
   "devDependencies": {

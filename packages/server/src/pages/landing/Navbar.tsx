@@ -24,7 +24,6 @@ export function Navbar() {
     ["How It Works", "#how-it-works"],
     ["Features", "#features"],
     ["Community", "#community"],
-    ["Challenges", "/challenges"],
   ];
   const [open, setOpen] = useState(false);
 
@@ -156,7 +155,7 @@ export function Navbar() {
                       </Link>
                     </Button>}
 
-                    <Connect />
+                  <Connect />
                 </div>
               </div>
             </SheetContent>
