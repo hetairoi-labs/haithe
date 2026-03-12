@@ -3,8 +3,8 @@ import { createContext, useContext } from "react";
 import { useWalletClient } from "wagmi";
 
 interface HaitheContextValue {
-  client: HaitheClient | null;
-  isInitialized: boolean;
+    client: HaitheClient | null;
+    isInitialized: boolean;
 }
 
 const HaitheContext = createContext<HaitheContextValue>({ client: null, isInitialized: false });
@@ -15,14 +15,18 @@ export function ServicesProvider({ children }: { children: React.ReactNode }) {
     // Always provide the context, but with null client when wallet is disconnected
     let client: HaitheClient | null = null;
     let isInitialized = false;
-    
+
     if (walletClient) {
         console.log('ServicesProvider: Creating HaitheClient');
         console.log('ServicesProvider: localStorage authToken:', localStorage.getItem('authToken'));
-        
+
+        if (!process.env.BUN_PUBLIC_RUST_SERVER_URL) {
+            throw new Error('BUN_PUBLIC_RUST_SERVER_URL is not set');
+        }
+
         client = new HaitheClient({
             walletClient: walletClient,
-            baseUrl: process.env.BUN_PUBLIC_RUST_SERVER_URL!,
+            baseUrl: process.env.BUN_PUBLIC_RUST_SERVER_URL,
             debug: true,
         });
 
@@ -32,12 +36,12 @@ export function ServicesProvider({ children }: { children: React.ReactNode }) {
             isLoggedIn: client.isLoggedIn(),
             hasToken: !!client.getAuthToken()
         });
-        
+
         client.persistentStorage = localStorage;
-        
+
         // Mark as initialized immediately after setting persistent storage
         isInitialized = true;
-        
+
         // Log current auth state
         console.log('ServicesProvider: Auth state after setting storage:', {
             isLoggedIn: client.isLoggedIn(),
