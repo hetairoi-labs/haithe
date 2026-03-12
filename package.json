@@ -19,7 +19,8 @@
 		"test-all": "python3 services/test/conductor.py",
 		"server:build": "cd packages/server && bun run build",
 		"server:start": "cd packages/server && bun run start",
-		"server:dev": "cd packages/server && bun run dev"
+		"server:dev": "cd packages/server && bun run dev",
+		"deploy": "./deploy.sh"
 	},
 	"private": true,
 	"devDependencies": {
